@@ -278,6 +278,7 @@ code {
 body {
   min-width: 320px;
   background: #101010;
+  overflow-x: hidden;
 }
 
 #app {
@@ -291,6 +292,7 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .hero-panel {
