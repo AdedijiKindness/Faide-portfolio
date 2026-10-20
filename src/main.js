@@ -1,5 +1,7 @@
 import './style.css'
 import heroImg from '../hero-img.jpg'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 document.querySelector('#app').innerHTML = `
   <main class="portfolio-shell">
@@ -24,17 +26,17 @@ document.querySelector('#app').innerHTML = `
       </nav>
 
       <div class="hero-content" id="top">
-        <div class="hero-intro">
+        <div class="hero-intro" data-aos="fade-up" data-aos-duration="800">
           <p class="eyebrow">Hey, I’m Faide, a</p>
           <h1>Video<br />Editor</h1>
         </div>
-        <div class="hero-summary">
+        <div class="hero-summary" data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">
           <h2>Great editing should<br />go unnoticed.</h2>
           <p>From raw footage to final cut, I shape stories<br />that hold attention and move people.</p>
         </div>
       </div>
 
-      <div class="service-list" aria-label="Services">
+      <div class="service-list" aria-label="Services" data-aos="fade-up" data-aos-delay="300">
         <div><span>#01</span><p>Documentary Editing</p></div>
         <div><span>#02</span><p>Longform Storytelling</p></div>
         <div><span>#03</span><p>Short-Form Content</p></div>
@@ -42,7 +44,7 @@ document.querySelector('#app').innerHTML = `
       </div>
     </section>
 
-    <section class="tools-strip" aria-labelledby="tools-title">
+    <section class="tools-strip" aria-labelledby="tools-title" data-aos="fade-up">
       <p class="tools-intro" id="tools-title">Tools I use to shape stories</p>
       <div class="tools-list">
         <div class="tool-item">
@@ -65,11 +67,11 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <section class="about-section" id="about" aria-labelledby="about-title">
-      <div class="about-heading">
+      <div class="about-heading" data-aos="fade-right">
         <p class="about-eyebrow">Who I Am</p>
         <h2 id="about-title">Editing with<br />Purpose and<br />Precision</h2>
       </div>
-      <div class="about-copy">
+      <div class="about-copy" data-aos="fade-left" data-aos-delay="120">
         <h3>Clear structure, strong pacing,<br />and stories built to keep<br />viewers watching.</h3>
         <div class="about-body">
           <p>I’m Faide, a YouTube video editor. I help creators turn raw footage into clear, well-paced videos that actually hold attention. Most of my work sits in Shorts and Explained-style content, where structure and timing matter more than flashy effects.</p>
@@ -81,12 +83,12 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <section class="featured-video-section" id="projects" aria-labelledby="featured-video-title">
-      <div class="featured-video-heading">
+      <div class="featured-video-heading" data-aos="fade-up">
         <p class="about-eyebrow">Featured Work</p>
         <h2 id="featured-video-title">Best Performing Video</h2>
       </div>
 
-      <div class="featured-video-grid">
+      <div class="featured-video-grid" data-aos="fade-up" data-aos-delay="120">
         <div class="video-player-placeholder">
           <iframe src="https://www.youtube.com/embed/5ecsnYB70co?si=x-Rq8J180na3B1Ob" title="Best performing video for Overscaled" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
@@ -114,27 +116,27 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <section class="reviews-section" aria-labelledby="reviews-title">
-      <div class="reviews-heading">
+      <div class="reviews-heading" data-aos="fade-up">
         <p class="about-eyebrow">Client Reviews</p>
         <h2 id="reviews-title">Words from the<br />people I work with.</h2>
       </div>
       <div class="reviews-grid">
-        <article class="review-card">
+        <article class="review-card" data-aos="fade-up" data-aos-delay="0">
           <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
           <p>&quot;Hey Faide, I like what I am seeing right here&quot;</p>
           <span class="review-quote" aria-hidden="true">“</span>
         </article>
-        <article class="review-card">
+        <article class="review-card" data-aos="fade-up" data-aos-delay="100">
           <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
           <p>&quot;Overall<br />You did great.<br />This is very close to what I like.&quot;</p>
           <span class="review-quote" aria-hidden="true">“</span>
         </article>
-        <article class="review-card">
+        <article class="review-card" data-aos="fade-up" data-aos-delay="200">
           <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
           <p>&quot;Your edits are really nice&quot;</p>
           <span class="review-quote" aria-hidden="true">“</span>
         </article>
-        <article class="review-card">
+        <article class="review-card" data-aos="fade-up" data-aos-delay="300">
           <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
           <p>&quot;Overall the video&apos;s great. And, the Sound Design was great too. I forgot to mention that&quot;</p>
           <span class="review-quote" aria-hidden="true">“</span>
@@ -143,27 +145,27 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <section class="timeline-section" aria-labelledby="timeline-title">
-      <div class="process-heading">
+      <div class="process-heading" data-aos="fade-up">
         <p class="timeline-kicker">How it works</p>
         <h2 id="timeline-title">From first message<br />to final delivery.</h2>
         <p class="process-intro">A simple, clear process so you always know where the project stands.</p>
       </div>
       <div class="timeline-track">
-        <article class="timeline-event">
+        <article class="timeline-event" data-aos="fade-up" data-aos-delay="0">
           <div class="process-number">01</div>
           <div class="timeline-copy">
             <h3>Brief</h3>
             <p>We align on the goal, style, references, and what the final video needs to do.</p>
           </div>
         </article>
-        <article class="timeline-event">
+        <article class="timeline-event" data-aos="fade-up" data-aos-delay="120">
           <div class="process-number">02</div>
           <div class="timeline-copy">
             <h3>Edit</h3>
             <p>I cut with clean pacing, clear structure, and attention to the story. You’ll get updates along the way.</p>
           </div>
         </article>
-        <article class="timeline-event">
+        <article class="timeline-event" data-aos="fade-up" data-aos-delay="240">
           <div class="process-number">03</div>
           <div class="timeline-copy">
             <h3>Delivery</h3>
@@ -175,14 +177,14 @@ document.querySelector('#app').innerHTML = `
 
     <footer class="contact-footer">
       <section class="contact-section" aria-labelledby="contact-title">
-        <div class="contact-intro">
+        <div class="contact-intro" data-aos="fade-right">
           <p class="contact-kicker"><span></span>Start a project</p>
           <h2 id="contact-title">Raw footage?<br />Let's make a <em>story.</em></h2>
           <p class="contact-note">Tell me what you’re building. I’ll get back to you within 1–2 business days.</p>
           <a class="whatsapp-link" href="https://wa.me/2348051191431" target="_blank" rel="noreferrer">Prefer WhatsApp? Message me <span aria-hidden="true">↗</span></a>
         </div>
 
-        <form class="project-form" action="mailto:adewunmifaith01@gmail.com" method="post" enctype="text/plain">
+        <form class="project-form" action="mailto:adewunmifaith01@gmail.com" method="post" enctype="text/plain" data-aos="fade-left" data-aos-delay="120">
           <div class="form-row">
             <label>
               <span>Name</span>
@@ -211,7 +213,7 @@ document.querySelector('#app').innerHTML = `
         </form>
       </section>
 
-      <div class="footer-bar">
+      <div class="footer-bar" data-aos="fade-up">
         <a class="footer-brand" href="#top">FAI<span>DE</span></a>
         <p>© 2026 Faide. All frames reserved.</p>
         <nav aria-label="Social links">
@@ -229,3 +231,10 @@ const updateNavState = () => siteNav.classList.toggle('is-scrolled', window.scro
 
 window.addEventListener('scroll', updateNavState, { passive: true })
 updateNavState()
+
+AOS.init({
+  duration: 700,
+  easing: 'ease-out-cubic',
+  once: true,
+  offset: 70,
+})
