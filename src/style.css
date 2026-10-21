@@ -1119,6 +1119,7 @@ body {
   margin-bottom: 5px;
   color: #fff;
   font-size: clamp(25px, 2.8vw, 40px);
+  font-variant-numeric: tabular-nums;
   font-weight: 600;
   letter-spacing: -0.06em;
 }

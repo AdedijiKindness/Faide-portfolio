@@ -74,11 +74,11 @@ document.querySelector('#app').innerHTML = `
         </a>
         <span class="rail-divider"></span>
         <nav class="rail-nav" aria-label="Social links">
-          <a class="rail-link" href="https://discord.com/users/faide_02" target="_blank" rel="noreferrer" aria-label="Discord" title="Discord"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="" /></a>
-          <a class="rail-link" href="https://tiktok.com" target="_blank" rel="noreferrer" aria-label="TikTok" title="TikTok"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="" /></a>
-          <a class="rail-link" href="https://instagram.com/faide.edits" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram"><img src="https://cdn.simpleicons.org/instagram/ffffff" alt="" /></a>
+          <a class="rail-link" href="https://discord.gg/mmeQqTFu" target="_blank" rel="noreferrer" aria-label="Discord" title="Discord"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="" /></a>
+          <a class="rail-link" href="https://www.tiktok.com/@faidevisuals?_r=1&amp;_t=ZS-9Ak71sSKR6I" target="_blank" rel="noreferrer" aria-label="TikTok" title="TikTok"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="" /></a>
+          <a class="rail-link" href="https://www.instagram.com/faide.edits?psln=MWl2bjhvODFoYWpjaQ%3D%3D&amp;utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram"><img src="https://cdn.simpleicons.org/instagram/ffffff" alt="" /></a>
           <a class="rail-link" href="https://wa.me/2348051191431" target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" /></a>
-          <a class="rail-link" href="https://x.com/FaideEdits" target="_blank" rel="noreferrer" aria-label="X" title="X"><img src="https://cdn.simpleicons.org/x/ffffff" alt="" /></a>
+          <a class="rail-link" href="https://x.com/faideedits?s=11" target="_blank" rel="noreferrer" aria-label="X" title="X"><img src="https://cdn.simpleicons.org/x/ffffff" alt="" /></a>
         </nav>
       </aside>
       <div class="about-heading" data-aos="fade-right">
@@ -114,9 +114,9 @@ document.querySelector('#app').innerHTML = `
             <p class="performance-label">Performance</p>
             <span class="performance-index">01</span>
           </div>
-          <div class="performance-stats" aria-label="Video performance metrics">
-            <div><strong>25,877</strong><span>Views</span></div>
-            <div><strong>60%</strong><span>Retention</span></div>
+          <div class="performance-stats" role="group" aria-label="25,877 views and 60% retention">
+            <div aria-hidden="true"><strong data-count-to="25877" data-video-id="5ecsnYB70co">25,877</strong><span>Views</span></div>
+            <div aria-hidden="true"><strong data-count-to="60" data-count-suffix="%">60%</strong><span>Retention</span></div>
           </div>
           <div class="performance-details">
             <p class="performance-label">Client</p>
@@ -253,10 +253,10 @@ document.querySelector('#app').innerHTML = `
           <div class="outreach-links" aria-label="Reach out on">
             <span>Reach out to me on</span>
             <nav aria-label="Reach out on social platforms">
-              <a href="https://discord.com/users/faide_02" target="_blank" rel="noreferrer" aria-label="Discord"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="" /></a>
-              <a href="https://x.com/FaideEdits" target="_blank" rel="noreferrer" aria-label="X"><img src="https://cdn.simpleicons.org/x/ffffff" alt="" /></a>
+              <a href="https://discord.gg/mmeQqTFu" target="_blank" rel="noreferrer" aria-label="Discord"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="" /></a>
+              <a href="https://x.com/faideedits?s=11" target="_blank" rel="noreferrer" aria-label="X"><img src="https://cdn.simpleicons.org/x/ffffff" alt="" /></a>
               <a href="https://wa.me/2348051191431" target="_blank" rel="noreferrer" aria-label="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" /></a>
-              <a href="https://tiktok.com" target="_blank" rel="noreferrer" aria-label="TikTok"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="" /></a>
+              <a href="https://www.tiktok.com/@faidevisuals?_r=1&amp;_t=ZS-9Ak71sSKR6I" target="_blank" rel="noreferrer" aria-label="TikTok"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="" /></a>
             </nav>
           </div>
         </div>
@@ -266,8 +266,8 @@ document.querySelector('#app').innerHTML = `
         <a class="footer-brand" href="#top">FAI<span>DE</span></a>
         <p>© 2026 Faide. All frames reserved.</p>
         <nav aria-label="Social links">
-          <a href="https://instagram.com/faide.edits" target="_blank" rel="noreferrer" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram" /></a>
-          <a href="https://x.com/FaideEdits" target="_blank" rel="noreferrer" aria-label="X"><img src="https://cdn.simpleicons.org/x/ffffff" alt="X" /></a>
+          <a href="https://www.instagram.com/faide.edits?psln=MWl2bjhvODFoYWpjaQ%3D%3D&amp;utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram" /></a>
+          <a href="https://x.com/faideedits?s=11" target="_blank" rel="noreferrer" aria-label="X"><img src="https://cdn.simpleicons.org/x/ffffff" alt="X" /></a>
           <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube"><img src="https://cdn.simpleicons.org/youtube/ffffff" alt="YouTube" /></a>
         </nav>
       </div>
@@ -287,3 +287,122 @@ AOS.init({
   once: true,
   offset: 70,
 })
+
+const countUpTargets = Array.from(document.querySelectorAll('[data-count-to]'))
+const statsBlock = document.querySelector('.performance-stats')
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+const formatCount = (value, suffix) => `${value.toLocaleString('en-US')}${suffix}`
+
+// Pulls the live view count for the embedded video. Falls back to the
+// hard-coded number if the request fails, times out, or returns junk.
+const fetchLiveViewCount = async (videoId, fallback) => {
+  if (!videoId || !('fetch' in window)) return fallback
+
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 6000)
+
+  try {
+    const response = await fetch(
+      `https://returnyoutubedislikeapi.com/votes?videoId=${encodeURIComponent(videoId)}`,
+      { signal: controller.signal, headers: { Accept: 'application/json' } }
+    )
+
+    if (!response.ok) throw new Error(`Live view count request failed: ${response.status}`)
+
+    const { viewCount } = await response.json()
+    const liveViews = Number(viewCount)
+
+    return Number.isFinite(liveViews) && liveViews > 0 ? Math.round(liveViews) : fallback
+  } catch {
+    return fallback
+  } finally {
+    clearTimeout(timeoutId)
+  }
+}
+
+// Start the request right away so the data is ready by the time the card scrolls in.
+const viewsElement = document.querySelector('[data-video-id]')
+const viewsFallback = viewsElement ? Number(viewsElement.dataset.countTo) : null
+const liveViewsRequest = viewsElement
+  ? fetchLiveViewCount(viewsElement.dataset.videoId, viewsFallback)
+  : null
+
+const animateCount = (element, target, delay = 0) => {
+  const suffix = element.dataset.countSuffix || ''
+  const duration = 1400
+
+  if (!Number.isFinite(target)) return
+
+  const start = performance.now() + delay
+
+  const tick = (now) => {
+    const elapsed = Math.max(now - start, 0)
+    const progress = Math.min(elapsed / duration, 1)
+    const eased = 1 - Math.pow(1 - progress, 3)
+    const value = Math.max(1, Math.round(1 + (target - 1) * eased))
+
+    element.textContent = formatCount(value, suffix)
+
+    if (progress < 1) {
+      requestAnimationFrame(tick)
+    } else {
+      element.textContent = formatCount(target, suffix)
+    }
+  }
+
+  requestAnimationFrame(tick)
+}
+
+const startCountUp = async () => {
+  // Wait for the live count, but never block the animation for more than ~1.2s.
+  const liveViews = liveViewsRequest
+    ? await Promise.race([
+        liveViewsRequest,
+        new Promise((resolve) => setTimeout(() => resolve(viewsFallback), 1200)),
+      ])
+    : viewsFallback
+
+  const targets = countUpTargets.map((element, index) => {
+    const fallback = Number(element.dataset.countTo)
+    return index === 0 && Number.isFinite(liveViews) && liveViews > 0 ? liveViews : fallback
+  })
+
+  statsBlock.setAttribute(
+    'aria-label',
+    `${formatCount(targets[0], '')} views and ${formatCount(targets[1], '')}% retention`
+  )
+
+  if (prefersReducedMotion) {
+    countUpTargets.forEach((element, index) => {
+      element.textContent = formatCount(targets[index], element.dataset.countSuffix || '')
+    })
+    return
+  }
+
+  countUpTargets.forEach((element, index) => {
+    animateCount(element, targets[index], index * 120)
+  })
+}
+
+if (countUpTargets.length && statsBlock) {
+  countUpTargets.forEach((element) => {
+    element.textContent = formatCount(1, element.dataset.countSuffix || '')
+  })
+
+  if (!('IntersectionObserver' in window)) {
+    startCountUp()
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return
+
+        observer.disconnect()
+        startCountUp()
+      },
+      { threshold: 0.4 }
+    )
+
+    observer.observe(statsBlock)
+  }
+}
