@@ -67,6 +67,20 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <section class="about-section" id="about" aria-labelledby="about-title">
+      <aside class="about-social-rail" aria-label="Quick navigation">
+        <div class="rail-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+        <a class="rail-brand" href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" title="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2C2 9 2 12 2 12s0 3 .4 4.8a2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2C22 15 22 12 22 12s0-3-.4-4.8Z" /><path class="rail-youtube-play" d="m10 15.5 5-3.5-5-3.5v7Z" /></svg>
+        </a>
+        <span class="rail-divider"></span>
+        <nav class="rail-nav" aria-label="Social links">
+          <a class="rail-link" href="https://discord.com/users/faide_02" target="_blank" rel="noreferrer" aria-label="Discord" title="Discord"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="" /></a>
+          <a class="rail-link" href="https://tiktok.com" target="_blank" rel="noreferrer" aria-label="TikTok" title="TikTok"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="" /></a>
+          <a class="rail-link" href="https://instagram.com/faide.edits" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram"><img src="https://cdn.simpleicons.org/instagram/ffffff" alt="" /></a>
+          <a class="rail-link" href="https://wa.me/2348051191431" target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" /></a>
+          <a class="rail-link" href="https://x.com/FaideEdits" target="_blank" rel="noreferrer" aria-label="X" title="X"><img src="https://cdn.simpleicons.org/x/ffffff" alt="" /></a>
+        </nav>
+      </aside>
       <div class="about-heading" data-aos="fade-right">
         <p class="about-eyebrow">Who I Am</p>
         <h2 id="about-title">Editing with<br />Purpose and<br />Precision</h2>
@@ -74,10 +88,12 @@ document.querySelector('#app').innerHTML = `
       <div class="about-copy" data-aos="fade-left" data-aos-delay="120">
         <h3>Clear structure, strong pacing,<br />and stories built to keep<br />viewers watching.</h3>
         <div class="about-body">
-          <p>I’m Faide, a YouTube video editor. I help creators turn raw footage into clear, well-paced videos that actually hold attention. Most of my work sits in Shorts and Explained-style content, where structure and timing matter more than flashy effects.</p>
-          <p>I focus on clean storytelling, tight pacing, and making sure the final video feels intentional. I also handle simple motion graphics and use AI tools where they genuinely speed up the process without lowering quality.</p>
-          <p>Clients tend to come back because I communicate clearly, stick to deadlines, and treat every project like it matters. Whether it’s a one-off edit or ongoing work, I aim to make the process smooth and the results consistent.</p>
-          <p>Open to new projects and longer-term collaborations.</p>
+          <ul class="about-points">
+            <li><strong>Storytelling</strong><span>I turn raw footage into clear, intentional videos that hold attention, especially for Shorts and Explained-style content.</span></li>
+            <li><strong>Pacing</strong><span>I shape structure, timing, sound, and simple motion graphics so every part of the edit earns its place.</span></li>
+            <li><strong>Reliability</strong><span>I communicate clearly, meet deadlines, and keep the process smooth whether it’s a one-off edit or ongoing work.</span></li>
+          </ul>
+          <p class="about-note">Open to new projects and longer-term collaborations.</p>
         </div>
       </div>
     </section>
@@ -113,6 +129,11 @@ document.querySelector('#app').innerHTML = `
           </div>
         </article>
       </div>
+
+      <a class="other-works-button" href="https://drive.google.com/drive/folders/1iRjAt97789NHUbZcslTgnxcH8fEvZXfn" target="_blank" rel="noreferrer">
+        <span>View my other works</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" /></svg>
+      </a>
     </section>
 
     <section class="reviews-section" aria-labelledby="reviews-title">
@@ -124,21 +145,37 @@ document.querySelector('#app').innerHTML = `
         <article class="review-card" data-aos="fade-up" data-aos-delay="0">
           <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
           <p>&quot;Hey Faide, I like what I am seeing right here&quot;</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/96?img=47" alt="Esther" />
+            <div><strong>Esther</strong><span>Instagram Creator · 1k+ followers</span></div>
+          </div>
           <span class="review-quote" aria-hidden="true">“</span>
         </article>
         <article class="review-card" data-aos="fade-up" data-aos-delay="100">
           <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
           <p>&quot;Overall<br />You did great.<br />This is very close to what I like.&quot;</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/96?img=32" alt="Maryann" />
+            <div><strong>Maryann</strong><span>Klaviyo Email Designer · 7-figure e-commerce brands</span></div>
+          </div>
           <span class="review-quote" aria-hidden="true">“</span>
         </article>
         <article class="review-card" data-aos="fade-up" data-aos-delay="200">
           <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
           <p>&quot;Your edits are really nice&quot;</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/96?img=12" alt="Dan" />
+            <div><strong>Dan</strong><span>Faceless Shorts Creator · up to 10k views/short</span></div>
+          </div>
           <span class="review-quote" aria-hidden="true">“</span>
         </article>
         <article class="review-card" data-aos="fade-up" data-aos-delay="300">
           <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
           <p>&quot;Overall the video&apos;s great. And, the Sound Design was great too. I forgot to mention that&quot;</p>
+          <div class="testimonial-author">
+            <img src="https://i.pravatar.cc/96?img=68" alt="Sekani" />
+            <div><strong>Sekani</strong><span>True Crime YouTuber · 10k+ subs</span></div>
+          </div>
           <span class="review-quote" aria-hidden="true">“</span>
         </article>
       </div>
@@ -184,40 +221,52 @@ document.querySelector('#app').innerHTML = `
           <a class="whatsapp-link" href="https://wa.me/2348051191431" target="_blank" rel="noreferrer">Prefer WhatsApp? Message me <span aria-hidden="true">↗</span></a>
         </div>
 
-        <form class="project-form" action="mailto:adewunmifaith01@gmail.com" method="post" enctype="text/plain" data-aos="fade-left" data-aos-delay="120">
-          <div class="form-row">
+        <div class="contact-form-column" data-aos="fade-left" data-aos-delay="120">
+          <form class="project-form" action="mailto:adewunmifaith01@gmail.com" method="post" enctype="text/plain">
+            <div class="form-row">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@company.com" required />
+              </label>
+            </div>
             <label>
-              <span>Name</span>
-              <input type="text" name="name" placeholder="Your name" required />
+              <span>Tell me about the project</span>
+              <textarea name="project" placeholder="What are we making?" rows="3" required></textarea>
             </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" placeholder="you@company.com" required />
+            <label class="budget-field">
+              <span>Estimated budget</span>
+              <select name="budget" required>
+                <option value="" selected disabled>Select a range</option>
+                <option value="under-500">Under $500</option>
+                <option value="500-1000">$500 - $1,000</option>
+                <option value="1000-2500">$1,000 - $2,500</option>
+                <option value="2500-plus">$2,500+</option>
+              </select>
             </label>
+            <button type="submit">Send enquiry <span aria-hidden="true">→</span></button>
+          </form>
+
+          <div class="outreach-links" aria-label="Reach out on">
+            <span>Reach out to me on</span>
+            <nav aria-label="Reach out on social platforms">
+              <a href="https://discord.com/users/faide_02" target="_blank" rel="noreferrer" aria-label="Discord"><img src="https://cdn.simpleicons.org/discord/ffffff" alt="" /></a>
+              <a href="https://x.com/FaideEdits" target="_blank" rel="noreferrer" aria-label="X"><img src="https://cdn.simpleicons.org/x/ffffff" alt="" /></a>
+              <a href="https://wa.me/2348051191431" target="_blank" rel="noreferrer" aria-label="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp/ffffff" alt="" /></a>
+              <a href="https://tiktok.com" target="_blank" rel="noreferrer" aria-label="TikTok"><img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="" /></a>
+            </nav>
           </div>
-          <label>
-            <span>Tell me about the project</span>
-            <textarea name="project" placeholder="What are we making?" rows="3" required></textarea>
-          </label>
-          <label class="budget-field">
-            <span>Estimated budget</span>
-            <select name="budget" required>
-              <option value="" selected disabled>Select a range</option>
-              <option value="under-500">Under $500</option>
-              <option value="500-1000">$500 - $1,000</option>
-              <option value="1000-2500">$1,000 - $2,500</option>
-              <option value="2500-plus">$2,500+</option>
-            </select>
-          </label>
-          <button type="submit">Send enquiry <span aria-hidden="true">→</span></button>
-        </form>
+        </div>
       </section>
 
       <div class="footer-bar" data-aos="fade-up">
         <a class="footer-brand" href="#top">FAI<span>DE</span></a>
         <p>© 2026 Faide. All frames reserved.</p>
         <nav aria-label="Social links">
-          <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram" /></a>
+          <a href="https://instagram.com/faide.edits" target="_blank" rel="noreferrer" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram/ffffff" alt="Instagram" /></a>
           <a href="https://x.com/FaideEdits" target="_blank" rel="noreferrer" aria-label="X"><img src="https://cdn.simpleicons.org/x/ffffff" alt="X" /></a>
           <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube"><img src="https://cdn.simpleicons.org/youtube/ffffff" alt="YouTube" /></a>
         </nav>
