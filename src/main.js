@@ -294,10 +294,11 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 const formatCount = (value, suffix) => `${value.toLocaleString('en-US')}${suffix}`
 
-// Pulls the live view count for the embedded video. Falls back to the
-// hard-coded number if the request fails, times out, or returns junk.
-const fetchLiveViewCount = async (videoId, fallback) => {
-  if (!videoId || !('fetch' in window)) return fallback
+// Pulls the live view count for the embedded video. Resolves to null when the
+// request fails, times out, or returns junk, so callers decide which number to
+// show and can still notice a value that arrives after their own deadline.
+const fetchLiveViewCount = async (videoId) => {
+  if (!videoId || !('fetch' in window)) return null
 
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), 6000)
@@ -313,9 +314,9 @@ const fetchLiveViewCount = async (videoId, fallback) => {
     const { viewCount } = await response.json()
     const liveViews = Number(viewCount)
 
-    return Number.isFinite(liveViews) && liveViews > 0 ? Math.round(liveViews) : fallback
+    return Number.isFinite(liveViews) && liveViews > 0 ? Math.round(liveViews) : null
   } catch {
-    return fallback
+    return null
   } finally {
     clearTimeout(timeoutId)
   }
@@ -323,66 +324,106 @@ const fetchLiveViewCount = async (videoId, fallback) => {
 
 // Start the request right away so the data is ready by the time the card scrolls in.
 const viewsElement = document.querySelector('[data-video-id]')
-const viewsFallback = viewsElement ? Number(viewsElement.dataset.countTo) : null
-const liveViewsRequest = viewsElement
-  ? fetchLiveViewCount(viewsElement.dataset.videoId, viewsFallback)
-  : null
+const liveViewsRequest = viewsElement ? fetchLiveViewCount(viewsElement.dataset.videoId) : null
 
-const animateCount = (element, target, delay = 0) => {
+// Reads whatever number the element is currently showing so a replacement
+// animation picks up from there instead of jumping back to the start.
+const readDisplayedCount = (element) => {
+  const displayed = Number(String(element.textContent).replace(/[^\d]/g, ''))
+  return Number.isFinite(displayed) && displayed > 0 ? displayed : 1
+}
+
+const runningFrames = new WeakMap()
+
+const animateCount = (element, target, { delay = 0, from = 1 } = {}) => {
   const suffix = element.dataset.countSuffix || ''
   const duration = 1400
 
   if (!Number.isFinite(target)) return
 
+  const previousFrame = runningFrames.get(element)
+  if (previousFrame) cancelAnimationFrame(previousFrame)
+
+  const startValue = Number.isFinite(from) ? from : 1
   const start = performance.now() + delay
 
   const tick = (now) => {
     const elapsed = Math.max(now - start, 0)
     const progress = Math.min(elapsed / duration, 1)
     const eased = 1 - Math.pow(1 - progress, 3)
-    const value = Math.max(1, Math.round(1 + (target - 1) * eased))
+    const value = Math.max(1, Math.round(startValue + (target - startValue) * eased))
 
     element.textContent = formatCount(value, suffix)
 
     if (progress < 1) {
-      requestAnimationFrame(tick)
+      runningFrames.set(element, requestAnimationFrame(tick))
     } else {
+      runningFrames.delete(element)
       element.textContent = formatCount(target, suffix)
     }
   }
 
-  requestAnimationFrame(tick)
+  runningFrames.set(element, requestAnimationFrame(tick))
+}
+
+// The view total the card is counting towards or already showing. Starts as the
+// hard-coded figure so the card reads correctly if the request never lands.
+let viewsTarget = countUpTargets[0] ? Number(countUpTargets[0].dataset.countTo) : null
+
+const syncStatsLabel = () => {
+  const retention = countUpTargets[1] ? Number(countUpTargets[1].dataset.countTo) : null
+  statsBlock.setAttribute(
+    'aria-label',
+    `${formatCount(viewsTarget, '')} views and ${formatCount(retention, '')}% retention`
+  )
 }
 
 const startCountUp = async () => {
-  // Wait for the live count, but never block the animation for more than ~1.2s.
-  const liveViews = liveViewsRequest
+  // Give the live count a short head start so the first animation usually lands
+  // on real data, but never hold the card back for more than ~1.2s.
+  const firstViews = liveViewsRequest
     ? await Promise.race([
         liveViewsRequest,
-        new Promise((resolve) => setTimeout(() => resolve(viewsFallback), 1200)),
+        new Promise((resolve) => setTimeout(() => resolve(null), 1200)),
       ])
-    : viewsFallback
+    : null
 
-  const targets = countUpTargets.map((element, index) => {
-    const fallback = Number(element.dataset.countTo)
-    return index === 0 && Number.isFinite(liveViews) && liveViews > 0 ? liveViews : fallback
-  })
+  if (Number.isFinite(firstViews) && firstViews > 0) viewsTarget = firstViews
 
-  statsBlock.setAttribute(
-    'aria-label',
-    `${formatCount(targets[0], '')} views and ${formatCount(targets[1], '')}% retention`
+  const targets = countUpTargets.map((element, index) =>
+    index === 0 ? viewsTarget : Number(element.dataset.countTo)
   )
+
+  syncStatsLabel()
 
   if (prefersReducedMotion) {
     countUpTargets.forEach((element, index) => {
       element.textContent = formatCount(targets[index], element.dataset.countSuffix || '')
     })
-    return
+  } else {
+    countUpTargets.forEach((element, index) => {
+      animateCount(element, targets[index], { delay: index * 120 })
+    })
   }
 
-  countUpTargets.forEach((element, index) => {
-    animateCount(element, targets[index], index * 120)
-  })
+  // A count that lands after the head start still refreshes the card instead of
+  // leaving the hard-coded fallback on screen.
+  if (liveViewsRequest) {
+    liveViewsRequest.then((lateViews) => {
+      if (!Number.isFinite(lateViews) || lateViews <= 0 || lateViews === viewsTarget) return
+
+      viewsTarget = lateViews
+      const viewsStat = countUpTargets[0]
+
+      if (prefersReducedMotion) {
+        viewsStat.textContent = formatCount(lateViews, viewsStat.dataset.countSuffix || '')
+      } else {
+        animateCount(viewsStat, lateViews, { from: readDisplayedCount(viewsStat) })
+      }
+
+      syncStatsLabel()
+    })
+  }
 }
 
 if (countUpTargets.length && statsBlock) {
