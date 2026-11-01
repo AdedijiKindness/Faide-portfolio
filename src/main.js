@@ -21,7 +21,7 @@ document.querySelector('#app').innerHTML = `
             <span class="nav-label">Work</span>
             <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2" /><path d="M8 5V3h8v2M3 10h18" /></svg>
           </a>
-          <a class="contact-button" href="https://wa.me/2348051191431" target="_blank" rel="noreferrer">Hire Me <span aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M3 10h13M11 5l5 5-5 5" /></svg></span></a>
+          <a class="contact-button" href="#contact-form">Hire Me <span aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M3 10h13M11 5l5 5-5 5" /></svg></span></a>
         </div>
       </nav>
 
@@ -222,7 +222,7 @@ document.querySelector('#app').innerHTML = `
         </div>
 
         <div class="contact-form-column" data-aos="fade-left" data-aos-delay="120">
-          <form class="project-form" action="mailto:adewunmifaith01@gmail.com" method="post" enctype="text/plain">
+          <form class="project-form" id="contact-form" action="mailto:adewunmifaith01@gmail.com" method="post" enctype="text/plain">
             <div class="form-row">
               <label>
                 <span>Name</span>
