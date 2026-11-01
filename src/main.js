@@ -114,8 +114,8 @@ document.querySelector('#app').innerHTML = `
             <p class="performance-label">Performance</p>
             <span class="performance-index">01</span>
           </div>
-          <div class="performance-stats" role="group" aria-label="26,328 views and 60% retention">
-            <div aria-hidden="true"><strong data-count-to="26328" data-video-id="5ecsnYB70co">26,328</strong><span>Views</span></div>
+          <div class="performance-stats" role="group" aria-label="26,334 views and 60% retention">
+            <div aria-hidden="true"><strong data-count-to="26334" data-video-id="5ecsnYB70co">26,334</strong><span>Views</span></div>
             <div aria-hidden="true"><strong data-count-to="60" data-count-suffix="%">60%</strong><span>Retention</span></div>
           </div>
           <div class="performance-details">
@@ -294,24 +294,30 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 const formatCount = (value, suffix) => `${value.toLocaleString('en-US')}${suffix}`
 
-// Pulls the live view count for the embedded video. Falls back to the
-// hard-coded number if the request fails, times out, or returns junk.
+// Pulls the live view count from the official YouTube Data API. Falls back to
+// the hard-coded number if the key is missing, the request fails, or returns junk.
 const fetchLiveViewCount = async (videoId, fallback) => {
-  if (!videoId || !('fetch' in window)) return fallback
+  const apiKey = import.meta.env.VITE_YOUTUBE_API_KEY
+  if (!videoId || !apiKey || !('fetch' in window)) return fallback
 
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), 6000)
 
   try {
-    const response = await fetch(
-      `https://returnyoutubedislikeapi.com/votes?videoId=${encodeURIComponent(videoId)}`,
-      { signal: controller.signal, headers: { Accept: 'application/json' } }
-    )
+    const params = new URLSearchParams({
+      part: 'statistics',
+      id: videoId,
+      key: apiKey,
+    })
+    const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?${params}`, {
+      signal: controller.signal,
+      headers: { Accept: 'application/json' },
+    })
 
     if (!response.ok) throw new Error(`Live view count request failed: ${response.status}`)
 
-    const { viewCount } = await response.json()
-    const liveViews = Number(viewCount)
+    const { items } = await response.json()
+    const liveViews = Number(items?.[0]?.statistics?.viewCount)
 
     return Number.isFinite(liveViews) && liveViews > 0 ? Math.round(liveViews) : fallback
   } catch {
