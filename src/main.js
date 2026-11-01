@@ -114,8 +114,8 @@ document.querySelector('#app').innerHTML = `
             <p class="performance-label">Performance</p>
             <span class="performance-index">01</span>
           </div>
-          <div class="performance-stats" role="group" aria-label="25,877 views and 60% retention">
-            <div aria-hidden="true"><strong data-count-to="25877" data-video-id="5ecsnYB70co">25,877</strong><span>Views</span></div>
+          <div class="performance-stats" role="group" aria-label="26,328 views and 60% retention">
+            <div aria-hidden="true"><strong data-count-to="26328" data-video-id="5ecsnYB70co">26,328</strong><span>Views</span></div>
             <div aria-hidden="true"><strong data-count-to="60" data-count-suffix="%">60%</strong><span>Retention</span></div>
           </div>
           <div class="performance-details">
@@ -241,10 +241,10 @@ document.querySelector('#app').innerHTML = `
               <span>Estimated budget</span>
               <select name="budget" required>
                 <option value="" selected disabled>Select a range</option>
-                <option value="under-500">Under $500</option>
-                <option value="500-1000">$500 - $1,000</option>
-                <option value="1000-2500">$1,000 - $2,500</option>
-                <option value="2500-plus">$2,500+</option>
+                <option value="under-100">Under $100</option>
+                <option value="100">$100</option>
+                <option value="100-250">$100-$250</option>
+                <option value="above-250">Above $250</option>
               </select>
             </label>
             <button type="submit">Send enquiry <span aria-hidden="true">→</span></button>
@@ -355,11 +355,11 @@ const animateCount = (element, target, delay = 0) => {
 }
 
 const startCountUp = async () => {
-  // Wait for the live count, but never block the animation for more than ~1.2s.
+  // Wait for the live count, but never block the animation for more than 5s.
   const liveViews = liveViewsRequest
     ? await Promise.race([
         liveViewsRequest,
-        new Promise((resolve) => setTimeout(() => resolve(viewsFallback), 1200)),
+        new Promise((resolve) => setTimeout(() => resolve(viewsFallback), 5000)),
       ])
     : viewsFallback
 
